@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// الآن نقوم بالاستيراد من ملف App.jsx
 import App from './App.jsx';
 import './index.css';
 
-// هذا هو نقطة الدخول لتطبيق React الخاص بك.
-// يقوم بتقديم المكون الرئيسي App في div الذي يحمل id "root" في ملف index.html.
+// This is the entry point for your React application.
+// It renders the main App component into the element with the id "root" in your index.html file.
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
