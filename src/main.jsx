@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
+// قم بالتأكد من أن الاستيراد يشير إلى ملف App.js
+import App from './App.js'; 
 import './index.css';
 
 // This is the entry point for your React application.
