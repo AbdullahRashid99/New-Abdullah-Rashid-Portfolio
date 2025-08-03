@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-    Mail, User, Briefcase, Star, Folder, Menu, X, Send, Linkedin, Phone,
+    Briefcase, Send, Linkedin, Phone,
     Award, Target, Megaphone, ShoppingCart, UserCheck, Building, LineChart,
-    Camera, GraduationCap, ArrowRight
+    Camera, GraduationCap, ArrowRight, Menu, X
 } from 'lucide-react';
 import { motion, AnimatePresence, useInView, useSpring, useTransform } from 'framer-motion';
 
@@ -44,7 +44,7 @@ const sections = [
     { id: "about", title: "About" },
     { id: "experience", title: "Experience" },
     { id: "skills", title: "Skills" },
-    { id: "projects", title: "Projects" },
+    { id: "projects", title: "Industries" }, // Changed title to 'Industries' as requested
     { id: "contact", title: "Contact" },
 ];
 
@@ -74,8 +74,6 @@ const projectsData = [
     { title: "Tech", image: "https://www.eurokidsindia.com/blog/wp-content/uploads/2023/12/names-of-electronic-devices-in-english.jpg" },
 ];
 
-// Removed unused imports to resolve warnings as errors
-// Palette, Code, BarChart3, Tiktok, Instagram, Dribbble, Twitter from 'lucide-react'
 
 // --- REUSABLE COMPONENTS ---
 
@@ -181,14 +179,14 @@ const ContactForm = () => {
 // --- MAIN APP COMPONENT ---
 export default function Portfolio() {
     const [activeSection, setActiveSection] = useState('home');
-    const sectionRefs = {
+    const sectionRefs = useRef({
         home: useRef(null),
         about: useRef(null),
         experience: useRef(null),
         skills: useRef(null),
         projects: useRef(null),
         contact: useRef(null),
-    };
+    }).current;
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -197,7 +195,7 @@ export default function Portfolio() {
         );
         Object.values(sectionRefs).forEach(ref => ref.current && observer.observe(ref.current));
         return () => observer.disconnect();
-    }, [sectionRefs]); // Added sectionRefs to the dependency array
+    }, [sectionRefs]);
 
     return (
         <div className="bg-neutral-950 text-white min-h-screen font-sans antialiased">
