@@ -176,11 +176,13 @@ export default function Portfolio() {
                     {/* Added the profile image as requested by the user */}
                     <img
                         src={personalInfo.profileImage}
-                        alt="Profile Picture of Abdullah Rashid"
+                        // FIX: Updated the alt text to remove redundant words like 'Picture' to pass a11y linting.
+                        alt="Abdullah Rashid's profile"
                         className="w-32 h-32 rounded-full object-cover border-4 border-neutral-700 mb-6"
                         onError={(e) => {
                           e.target.src = "https://placehold.co/128x128/334155/E2E8F0?text=AR";
-                          e.target.alt = "Placeholder image with initials AR";
+                          // FIX: Also updated the fallback alt text for consistency.
+                          e.target.alt = "Placeholder profile photo for Abdullah Rashid";
                         }}
                     />
                     <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4">Abdullah Rashid<br/>Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-500">Digital Growth</span> Partner.</h1>
