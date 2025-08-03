@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
     Mail, User, Briefcase, Star, Folder, Menu, X, Send, Linkedin, Phone,
     Award, Target, Megaphone, ShoppingCart, UserCheck, Building, LineChart,
-    Camera, GraduationCap, ArrowRight, Palette, Code, BarChart3,
-    Tiktok, Instagram, Dribbble, Twitter
+    Camera, GraduationCap, ArrowRight
 } from 'lucide-react';
 import { motion, AnimatePresence, useInView, useSpring, useTransform } from 'framer-motion';
 
@@ -34,7 +33,6 @@ const CardContent = ({ children, className, ...props }) => (
 const personalInfo = {
     name: "Abdullah Rashid",
     // Reordered the title as requested by the user.
-    // تم تحديث العنوان بناءً على طلب المستخدم
     title: "Senior Performance Marketer | E-commerce Expert | Certified by Google",
     linkedin: "https://www.linkedin.com/in/abdullah-rashid4444/",
     whatsapp: "http://wa.me/+201025030220",
@@ -51,12 +49,11 @@ const sections = [
 ];
 
 const experienceData = [
-    // تم تحديث عنوان الخبرة
     { icon: <Award />, title: "Certified Digital Marketing & Ecommerce Expert", company: "Google", description: "Earned 8 certifications covering SMM, SEO, SEM, Email, Ads, Analytics, and Customer Loyalty." },
     { icon: <Megaphone />, title: "Digital Marketing Specialist", company: "Lasers", description: "Helped scale social campaigns for mental health in the Arab world, boosting organic reach beyond internal capacity." },
     { icon: <Target />, title: "Media Buyer ", company: "Azrak", description: "Planned, launched, and optimized paid media campaigns on Meta & Tiktok, significantly improving ROI and reducing CPA." },
     { icon: <ShoppingCart />, title: "E-commerce & Dropshipping Expert", company: "Freelance", description: "Created high-converting Shopify stores, specializing in pricing, competitor analysis, and product development." },
-    { icon: <UserCheck />, title: "One-to-One Digital Marketing Coach", company: "Freelance", date: "2025–Present", description: "Delivered personalized training sessions, simplifying complex concepts to help clients execute real-world campaigns." },
+    { icon: <UserCheck />, title: "One-to-One Digital Marketing Coach", company: "Freelance", description: "Delivered personalized training sessions, simplifying complex concepts to help clients execute real-world campaigns." },
     { icon: <Briefcase />, title: "Account Manager", company: "Business Empire", description: "Managed key accounts across diverse niches including fashion, cosmetics & real estate." },
     { icon: <Building />, title: "Real Estate Campaigns", company: "OFQ, Royal City", description: "Led successful digital marketing campaigns for major real estate developers." },
     { icon: <LineChart />, title: "Stock Market & Financial Analyst", company: "Self-Directed", description: "Specialized in economic, political, and technical analysis of financial markets." },
@@ -77,6 +74,8 @@ const projectsData = [
     { title: "Tech", image: "https://www.eurokidsindia.com/blog/wp-content/uploads/2023/12/names-of-electronic-devices-in-english.jpg" },
 ];
 
+// Removed unused imports to resolve warnings as errors
+// Palette, Code, BarChart3, Tiktok, Instagram, Dribbble, Twitter from 'lucide-react'
 
 // --- REUSABLE COMPONENTS ---
 
@@ -88,7 +87,6 @@ const AnimatedCounter = ({ value }) => {
 
     const formattedValue = useTransform(
         motionValue,
-        // Removed the space between the currency symbol and the number as requested
         (latest) => `£${Math.round(latest).toLocaleString()}+`
     );
 
@@ -199,7 +197,7 @@ export default function Portfolio() {
         );
         Object.values(sectionRefs).forEach(ref => ref.current && observer.observe(ref.current));
         return () => observer.disconnect();
-    }, []);
+    }, [sectionRefs]); // Added sectionRefs to the dependency array
 
     return (
         <div className="bg-neutral-950 text-white min-h-screen font-sans antialiased">
@@ -267,7 +265,6 @@ export default function Portfolio() {
                             <CardContent>
                                 <h3 className="text-2xl font-bold text-amber-400 mb-2">Total Ad Spend Managed</h3>
                                 {/* Adjusted the styling to ensure the number and symbol are centered */}
-                                {/* تم تحديث القيمة إلى 750000 بناءً على طلبك */}
                                 <p className="text-5xl font-mono font-bold text-white flex justify-center"><AnimatedCounter value={750000} /></p>
                             </CardContent>
                         </Card>
