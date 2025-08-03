@@ -9,7 +9,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "lucide-react": "^0.303.0",
+    "framer-motion": "^10.16.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,4 +39,3 @@
     ]
   }
 }
-
