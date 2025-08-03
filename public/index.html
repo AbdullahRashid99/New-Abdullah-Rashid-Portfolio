@@ -1,13 +1,10 @@
-```html
 <!DOCTYPE html>
-<html lang="EN">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Abdullah Rashid</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lucide-react@latest/dist/lucide-react.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/framer-motion@latest/dist/framer-motion.umd.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         body {
@@ -18,30 +15,33 @@
 </head>
 <body>
     <div id="root"></div>
+
     <script type="module">
         import React, { useState, useEffect, useRef } from 'https://esm.sh/react@18.2.0';
         import ReactDOM from 'https://esm.sh/react-dom@18.2.0';
-        import { Mail, User, Briefcase, Star, Folder, Menu, X, Send, Linkedin, Phone, Award, Target, Megaphone, ShoppingCart, UserCheck, Building, LineChart, Camera, GraduationCap, ArrowRight } from 'lucide-react';
         import { motion, AnimatePresence, useInView, useSpring, useTransform } from 'framer-motion';
+        import { Mail, User, Briefcase, Award, Target, Megaphone, ShoppingCart, UserCheck, Building, LineChart, Camera, GraduationCap, ArrowRight, Linkedin, Phone } from 'lucide-react';
 
+        // --- UI COMPONENTS ---
         const Button = ({ children, className, ...props }) => (
-          <button className={`px-6 py-3 font-semibold rounded-lg transition-all duration-300 ease-in-out ${className}`} {...props}>
-            {children}
-          </button>
+            <button className={`px-6 py-3 font-semibold rounded-lg transition-all duration-300 ease-in-out ${className}`} {...props}>
+                {children}
+            </button>
         );
 
         const Card = ({ children, className, ...props }) => (
-          <div className={`bg-neutral-900/80 border border-neutral-800 rounded-xl shadow-lg ${className}`} {...props}>
-            {children}
-          </div>
+            <div className={`bg-neutral-900/80 border border-neutral-800 rounded-xl shadow-lg ${className}`} {...props}>
+                {children}
+            </div>
         );
 
         const CardContent = ({ children, className, ...props }) => (
-          <div className={`p-6 ${className}`} {...props}>
-            {children}
-          </div>
+            <div className={`p-6 ${className}`} {...props}>
+                {children}
+            </div>
         );
 
+        // --- DATA CONFIGURATION ---
         const personalInfo = {
             name: "Abdullah Rashid",
             title: "Senior Performance Marketer | E-commerce Expert | Certified by Google",
@@ -54,19 +54,19 @@
             { id: "about", title: "About" },
             { id: "experience", title: "Experience" },
             { id: "skills", title: "Skills" },
-            { id: "projects", title: "Projects" },
+            { id: "projects", title: "Industries" },
             { id: "contact", title: "Contact" },
         ];
 
         const experienceData = [
             { icon: <Award />, title: "Certified Digital Marketing & Ecommerce Expert", company: "Google", description: "Earned 8 certifications covering SMM, SEO, SEM, Email, Ads, Analytics, and Customer Loyalty." },
-            { icon: <Megaphone />, title: "Digital Marketing Specialist", company: "Lasers", description: "Helped scale social campaigns for mental health in the Arab world, boosting organic reach beyond internal capacity." },
-            { icon: <Target />, title: "Media Buyer ", company: "Azrak", description: "Planned, launched, and optimized paid media campaigns on Meta & Tiktok, significantly improving ROI and reducing CPA." },
-            { icon: <ShoppingCart />, title: "E-commerce & Dropshipping Expert", company: "Freelance", description: "Created high-converting Shopify stores, specializing in pricing, competitor analysis, and product development." },
-            { icon: <User Check />, title: "One-to-One Digital Marketing Coach", company: "Freelance", description: "Delivered personalized training sessions, simplifying complex concepts to help clients execute real-world campaigns." },
-            { icon: <Briefcase />, title: "Account Manager", company: "Business Empire", description: "Managed key accounts across diverse niches including fashion, cosmetics & real estate." },
-            { icon: <Building />, title: "Real Estate Campaigns", company: "OFQ, Royal City", description: "Led successful digital marketing campaigns for major real estate developers." },
-            { icon: <LineChart />, title: "Stock Market & Financial Analyst", company: "Self-Directed", description: "Specialized in economic, political, and technical analysis of financial markets." },
+            { icon: <Megaphone />, title: "Digital Marketing Specialist", company: "Lasers", description: "Helped scale social campaigns for mental health in the Arab world." },
+            { icon: <Target />, title: "Media Buyer", company: "Azrak", description: "Planned and optimized paid media campaigns on Meta & TikTok." },
+            { icon: <ShoppingCart />, title: "E-commerce & Dropshipping Expert", company: "Freelance", description: "Created high-converting Shopify stores." },
+            { icon: <User Check />, title: "One-to-One Digital Marketing Coach", company: "Freelance", description: "Delivered personalized training sessions." },
+            { icon: <Briefcase />, title: "Account Manager", company: "Business Empire", description: "Managed key accounts across diverse niches." },
+            { icon: <Building />, title: "Real Estate Campaigns", company: "OFQ, Royal City", description: "Led successful digital marketing campaigns." },
+            { icon: <LineChart />, title: "Stock Market & Financial Analyst", company: "Self-Directed", description: "Specialized in economic and technical analysis." },
         ];
 
         const skillsData = [
@@ -74,46 +74,32 @@
         ];
 
         const projectsData = [
-            { title: "Fashion & Apparel", image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fEZhc2hpb24lMjAlMjYlMjBBcHBhcmVsfGVufDB8fDB8fHww" },
+            { title: "Fashion & Apparel", image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&auto=format&fit=crop&q=60" },
             { title: "Cosmetics & Beauty", image: "https://www.dhl.com/discover/content/dam/hong-kong/desktop/e-commerce-advice/e-commerce-guides-by-country/guide-to-packaging-and-shipping-cosmetics-and-beauty-products-from-hong-kong/cosmetic-and-beauty-products-in-a-shipping-box-1920x998.jpg" },
             { title: "Real Estate", image: "https://www.agentadvice.com/wp-content/uploads/2020/12/shutterstock_1247473441-scaled.jpg" },
-            { title: "Medical & Healthcare", image: "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8TWVkaWNhbHxlbnwwfHwwfHx8MA%3D%3D" },
-            { title: "Restaurants & Cafés", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8UmVzdGF1cmFudHN8ZW58MHx8MHx8fDA%3D" },
-            { title: "Furniture & Interiors", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8UmVhbCUyMEVzdGF0ZXxlbnwwfHwwfHx8MA%3D%3D" },
-            { title: "SaaS", image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8U2FhU3xlbnwwfHwwfHx8MA%3D%3D" },
+            { title: "Medical & Healthcare", image: "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?w=500&auto=format&fit=crop&q=60" },
+            { title: "Restaurants & Cafés", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60" },
+            { title: "Furniture & Interiors", image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&auto=format&fit=crop&q=60" },
+            { title: "SaaS", image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&auto=format&fit=crop&q=60" },
             { title: "Tech", image: "https://www.eurokidsindia.com/blog/wp-content/uploads/2023/12/names-of-electronic-devices-in-english.jpg" },
         ];
 
-        const AnimatedCounter = ({ value }) => {
-            const ref = useRef(null);
-            const isInView = useInView(ref, { once: true });
-            const motionValue = useSpring(0, { stiffness: 50, damping: 30 });
-            const formattedValue = useTransform(motionValue, (latest) => `£${Math.round(latest).toLocaleString()}+`);
-
-            useEffect(() => {
-                if (isInView) {
-                    motionValue.set(value);
-                }
-            }, [isInView, value, motionValue]);
-
-            return <motion.span ref={ref}>{formattedValue}</motion.span>;
-        };
-
+        // --- REUSABLE COMPONENTS ---
         const SectionWrapper = React.forwardRef(({ id, title, children, className }, ref) => (
-          <motion.section
-            ref={ref}
-            id={id}
-            className={`py-20 md:py-28 ${className}`}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-300 to-sky-400">{title}</span>
-            </h2>
-            {children}
-          </motion.section>
+            <motion.section
+                ref={ref}
+                id={id}
+                className={`py-20 md:py-28 ${className}`}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-300 to-sky-400">{title}</span>
+                </h2>
+                {children}
+            </motion.section>
         ));
 
         const Navbar = ({ activeSection }) => {
@@ -173,6 +159,7 @@
             );
         };
 
+        // --- MAIN APP COMPONENT ---
         const Portfolio = () => {
             const [activeSection, setActiveSection] = useState('home');
             const sectionRefs = {
@@ -214,7 +201,9 @@
                             <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-4xl md:text-6xl font-extrabold tracking-tighter mb-4">Abdullah Rashid<br/>Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-500">Digital Growth</span> Partner.</motion.h1>
                             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-lg md:text-xl text-neutral-300 mb-8">{personalInfo.title}</motion.p>
                             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}>
-                                <a href="https://docs.google.com/forms/d/10VnJVDvM4agvJ2y_M5MfC4-87tTYQNe30F4faxpGkVA/edit?ts=687cefe4" target="_blank" rel="noopener noreferrer"><Button className="bg-teal-500 hover:bg-teal-600 text-white shadow-lg shadow-teal-500/20 hover:shadow-xl hover:shadow-teal-500/30">Let’s Work Together</Button></a>
+                                <a href="https://docs.google.com/forms/d/10VnJVDvM4agvJ2y_M5MfC4-87tTYQNe30F4faxpGkVA/edit?ts=687cefe4" target="_blank" rel="noopener noreferrer">
+                                    <Button className="bg-teal-500 hover:bg-teal-600 text-white shadow-lg shadow-teal-500/20 hover:shadow-xl hover:shadow-teal-500/30">Let’s Work Together</Button>
+                                </a>
                             </motion.div>
                         </section>
 
@@ -224,5 +213,43 @@
                             </p>
                         </SectionWrapper>
 
-                        <SectionWrapper ref={sectionRefs.experience} id="
+                        <SectionWrapper ref={sectionRefs.experience} id="experience" title="Experience Timeline">
+                            <div className="max-w-3xl mx-auto relative">
+                                <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-neutral-800 -translate-x-1/2"></div>
+                                {experienceData.map((item, index) => (
+                                    <motion.div key={index} className={`mb-12 flex items-start gap-4 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`} initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.6 }}>
+                                        <div className="hidden md:block w-1/2"></div>
+                                        <div className="relative w-full md:w-1/2">
+                                            <div className="absolute -left-1.5 md:left-auto md:right-full md:mr-6 lg:mr-7 top-1 w-8 h-8 rounded-full bg-neutral-800 border-2 border-teal-500 flex items-center justify-center text-teal-400">{item.icon}</div>
+                                            <Card className="hover:border-teal-500/50 transition-colors">
+                                                <CardContent>
+                                                    <h3 className="text-xl font-semibold text-white mb-1">{item.title}</h3>
+                                                    <p className="text-sm text-neutral-400 font-medium mb-3">{item.company}</p>
+                                                    <p className="text-neutral-400">{item.description}</p>
+                                                </CardContent>
+                                            </Card>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </SectionWrapper>
 
+                        <SectionWrapper id="achievements" title="Key Achievements">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto text-center">
+                                <Card>
+                                    <CardContent>
+                                        <h3 className="text-2xl font-bold text-amber-400 mb-2">Total Ad Spend Managed</h3>
+                                        <p className="text-5xl font-mono font-bold text-white flex justify-center">£750,000+</p>
+                                    </CardContent>
+                                </Card>
+                                <Card>
+                                    <CardContent>
+                                        <h3 className="text-2xl font-bold text-teal-400 mb-2">Average ROI Generated</h3>
+                                        <p className="text-5xl font-mono font-bold text-white">13x - 20x</p>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                        </SectionWrapper>
+
+                        <SectionWrapper ref={sectionRefs.skills} id="skills" title="Skills & Expertise">
+                            <div className="flex flex-wrap justify-center gap-3 max-w-4xl
